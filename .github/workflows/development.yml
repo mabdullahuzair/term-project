@@ -1,17 +1,39 @@
 name: Development CI
 
 on:
+  pull_request:
+    branches:
+      - develop
   push:
     branches:
       - develop
 
 jobs:
-  build-test:
-    name: Build and Test
+  lint-build-test:
+    name: Lint, Build, and Test
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Run build
-        run: echo "Building..."
-      - name: Run tests
-        run: echo "Testing..."
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (if you want to add linters later)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # or whatever version you prefer
+
+      - name: Lint HTML (optional, good practice)
+        run: |
+          echo "Linting HTML files..."
+          # Example: install and run htmlhint if you want strict checks
+          # npm install -g htmlhint
+          # htmlhint src/*.html
+
+      - name: Build (placeholder)
+        run: echo "Building static files..."
+
+      - name: Test (placeholder)
+        run: echo "Running basic tests..."
+
+      - name: Success message
+        run: echo "CI passed successfully!"
