@@ -17,23 +17,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (if you want to add linters later)
+      - name: Set up Node.js (for future linters or builds)
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # or whatever version you prefer
+          node-version: '20'
 
-      - name: Lint HTML (optional, good practice)
+      - name: Basic HTML Lint (Very Basic Rules)
         run: |
-          echo "Linting HTML files..."
-          # Example: install and run htmlhint if you want strict checks
-          # npm install -g htmlhint
-          # htmlhint src/*.html
+          echo "Running basic HTML lint (non-blocking)..."
+          npm install -g htmlhint
+          echo '{
+            "tag-pair": true,
+            "doctype-first": false,
+            "attr-lowercase": false,
+            "attr-value-double-quotes": false,
+            "spec-char-escape": false
+          }' > .htmlhintrc.json
+          htmlhint src/*.html || echo "Lint warnings ignored for now."
 
-      - name: Build (placeholder)
-        run: echo "Building static files..."
+      - name: Build Placeholder
+        run: echo "Building the project..."
 
-      - name: Test (placeholder)
-        run: echo "Running basic tests..."
+      - name: Test Placeholder
+        run: echo "Running tests..."
 
-      - name: Success message
-        run: echo "CI passed successfully!"
+      - name: CI Completed
+        run: echo "CI pipeline completed successfully!"
