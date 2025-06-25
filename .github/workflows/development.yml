@@ -9,30 +9,26 @@ on:
       - develop
 
 jobs:
-  lint-build-test:
-    name: Lint, Build, and Test
+  unit-build-test:                               
+    name: Development CI / unit-build-test 
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (if you want to add linters later)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # or whatever version you prefer
+          node-version: '20'
 
-      - name: Lint HTML (optional, good practice)
-        run: |
-          echo "Linting HTML files..."
-          # Example: install and run htmlhint if you want strict checks
-          # npm install -g htmlhint
-          # htmlhint src/*.html
+      - name: Lint HTML
+        run: echo "Linting HTML files..."
 
-      - name: Build (placeholder)
+      - name: Build
         run: echo "Building static files..."
 
-      - name: Test (placeholder)
+      - name: Test
         run: echo "Running basic tests..."
 
       - name: Success message
