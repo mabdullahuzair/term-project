@@ -15,5 +15,10 @@
     "url": "https://github.com/imranucp/term-project-f24/issues"
   },
   "homepage": "https://github.com/imranucp/term-project-f24#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "htmllint": "^0.8.0",
+    "stylelint": "^16.21.0",
+    "stylelint-config-standard": "^38.0.0"
+  }
 }
