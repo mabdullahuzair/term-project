@@ -9,8 +9,8 @@ on:
       - develop
 
 jobs:
-  unit-build-test:                               
-    name: Development CI / unit-build-test 
+  unit-build-test:
+    name: Development CI / unit-build-test
     runs-on: ubuntu-latest
 
     steps:
@@ -21,9 +21,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Lint HTML
-        run: echo "Linting HTML files..."
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint HTML files
+        run: npx htmllint "src/**/*.html"
+
+      - name: Lint CSS files
+        run: npx stylelint "src/**/*.css"
 
       - name: Build
         run: echo "Building static files..."
