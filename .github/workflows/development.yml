@@ -1,35 +1,40 @@
 name: Development CI
 
 on:
-  pull_request:
-    branches:
-      - develop
   push:
-    branches:
-      - develop
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
-  unit-build-test:                               
-    name: Development CI / unit-build-test 
+  build-and-lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Lint HTML
-        run: echo "Linting HTML files..."
+        run: |
+          npm install -g htmlhint
+          htmlhint "**/*.html"
 
-      - name: Build
-        run: echo "Building static files..."
+      - name: Lint CSS
+        run: |
+          npm install -g stylelint
+          stylelint "**/*.css"
 
-      - name: Test
-        run: echo "Running basic tests..."
+      - name: Build with Parcel
+        run: |
+          npm install -g parcel
+          parcel build src/index.html
 
-      - name: Success message
-        run: echo "CI passed successfully!"
+      - name: Deploy to development-env
+        run: echo "Deploying to development environment..."
