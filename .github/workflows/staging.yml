@@ -1,0 +1,37 @@
+name: Staging CI
+
+on:
+  push:
+    branches:
+      - release/*
+  pull_request:
+    branches:
+      - release/*
+
+jobs:
+  staging-build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint HTML
+        run: npx htmlhint "**/*.html"
+
+      - name: Lint CSS
+        run: npx stylelint "**/*.css"
+
+      - name: Build
+        run: npx parcel build src/index.html
+
+      - name: Deploy to Staging
+        run: echo "Deploying to staging environment..."
