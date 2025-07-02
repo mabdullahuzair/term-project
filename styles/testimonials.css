@@ -1,5 +1,5 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   padding: 40px;
   margin: 0;
@@ -12,12 +12,12 @@ header h1 {
 }
 
 .testimonial {
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 25px 30px;
   margin: 20px auto;
   border-left: 5px solid #2980b9;
   max-width: 700px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 }
 
 .testimonial p {

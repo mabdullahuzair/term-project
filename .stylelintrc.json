@@ -1,15 +1,23 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "plugins": [
+    "@stylistic/stylelint-plugin"
+  ],
   "rules": {
-    "indentation": 2,
-    "string-quotes": "double",
-    "color-hex-case": "lower",
     "block-no-empty": true,
     "color-no-invalid-hex": true,
-    "declaration-colon-space-after": "always",
-    "max-empty-lines": 1,
-    "no-extra-semicolons": true,
+    "declaration-block-no-duplicate-properties": true,
     "selector-pseudo-class-no-unknown": true,
-    "unit-no-unknown": true
+    "unit-no-unknown": true,
+    "color-hex-length": "short",
+    "alpha-value-notation": "percentage",
+    "@stylistic/indentation": 2,
+    "@stylistic/string-quotes": "double",
+    "@stylistic/color-hex-case": "lower",
+    "@stylistic/declaration-colon-space-after": "always-single-line",
+    "@stylistic/max-empty-lines": 1,
+    "@stylistic/no-extra-semicolons": true
   }
 }

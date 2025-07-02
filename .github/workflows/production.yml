@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Stylelint plugin
+        run: npm install --save-dev @stylistic/stylelint-plugin
+
       - name: Lint HTML
         run: npx htmlhint "**/*.html"
 
